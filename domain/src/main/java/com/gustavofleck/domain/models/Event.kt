@@ -1,4 +1,4 @@
-package com.gustavofleck.data.models
+package com.gustavofleck.domain.models
 
 data class Event(
     val people: List<String>,

@@ -7,8 +7,8 @@ data class EventResponse(
     @SerializedName("date") val date: Long?,
     @SerializedName("description") val description: String?,
     @SerializedName("image") val image: String?,
-    @SerializedName("longitude") val longitude: Long?,
-    @SerializedName("latitude") val latitude: Long?,
+    @SerializedName("longitude") val longitude: Double?,
+    @SerializedName("latitude") val latitude: Double?,
     @SerializedName("price") val price: Float?,
     @SerializedName("title") val title: String?,
     @SerializedName("id") val id: String?
