@@ -8,7 +8,7 @@ data class Event(
     val address: String,
     val price: Float,
     val title: String,
-    val id: Int
+    val id: String
 )
 
-fun Event.simplify() = SimplifiedEvent(title, image, date, price)
+fun Event.simplify() = SimplifiedEvent(title, image, date, price, id)

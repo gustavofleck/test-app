@@ -4,5 +4,6 @@ data class SimplifiedEvent(
     val title: String,
     val image: String,
     val date: String,
-    val price: Float
+    val price: Float,
+    val id: String
 )

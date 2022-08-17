@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.gustavofleck.sicrediteste.FirstFragment"
+        android:name="com.gustavofleck.sicrediteste.EventListFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/event_list_fragment">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
