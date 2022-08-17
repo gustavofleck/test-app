@@ -1,6 +1,7 @@
 package com.gustavofleck.domain.usecases
 
 import app.cash.turbine.test
+import com.gustavofleck.domain.models.simplify
 import com.gustavofleck.domain.repository.EventListRepository
 import com.gustavofleck.domain.utils.createEvent
 import io.mockk.every
@@ -18,14 +19,16 @@ internal class FetchEventListUseCaseTest {
 
     @Test
     fun `invoke Should get from repository a Flow with a list of events`() {
-        val expectedEventList = listOf(createEvent(), createEvent())
+        val expectedEvent = createEvent()
+        val expectedEventList = listOf(expectedEvent)
+        val expectedSimplifiedEventList = listOf(expectedEvent.simplify())
         every { repositoryMock.eventList() } returns flowOf(expectedEventList)
 
         val result = useCase.invoke()
 
         runBlocking {
             result.test {
-                assertEquals(expectedEventList, awaitItem())
+                assertEquals(expectedSimplifiedEventList, awaitItem())
                 awaitComplete()
             }
         }
@@ -41,7 +44,6 @@ internal class FetchEventListUseCaseTest {
         runBlocking {
             result.test {
                 assertEquals(expectedThrowable, awaitError())
-                cancelAndConsumeRemainingEvents()
             }
         }
     }

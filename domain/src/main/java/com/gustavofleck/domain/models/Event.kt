@@ -10,3 +10,5 @@ data class Event(
     val title: String,
     val id: Int
 )
+
+fun Event.simplify() = SimplifiedEvent(title, image, date, price)
