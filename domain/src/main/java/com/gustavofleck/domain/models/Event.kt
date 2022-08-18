@@ -5,10 +5,11 @@ data class Event(
     val date: String,
     val description: String,
     val image: String,
-    val address: String,
+    val longitude: Double,
+    val latitude: Double,
     val price: Float,
     val title: String,
     val id: String
 )
 
-fun Event.simplify() = SimplifiedEvent(title, image, date, price, id)
+fun Event.simplify() = SimplifiedEvent(title, image, date, longitude, latitude, price, id)
