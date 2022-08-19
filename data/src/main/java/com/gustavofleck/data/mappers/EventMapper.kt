@@ -1,6 +1,6 @@
 package com.gustavofleck.data.mappers
 
-import com.gustavofleck.data.models.EventResponse
+import com.gustavofleck.data.models.responses.EventResponse
 import com.gustavofleck.domain.models.Event
 import java.text.SimpleDateFormat
 import java.util.Locale

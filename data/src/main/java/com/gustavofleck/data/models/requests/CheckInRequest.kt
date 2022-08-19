@@ -1,4 +1,4 @@
-package com.gustavofleck.data.models
+package com.gustavofleck.data.models.requests
 
 import com.google.gson.annotations.SerializedName
 

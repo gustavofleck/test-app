@@ -1,6 +1,6 @@
 package com.gustavofleck.utils.stubs
 
-import com.gustavofleck.data.models.EventResponse
+import com.gustavofleck.data.models.responses.EventResponse
 import com.gustavofleck.domain.models.Event
 
 fun createEventResponse() = EventResponse(
@@ -18,11 +18,11 @@ fun createEventResponse() = EventResponse(
 fun createEvent() = Event(
     people = listOf(),
     date = "12/12/2022",
-    description = "Test description",
-    image = "https://imageurl.teste",
+    description = "Test description response",
+    image = "https://imageurl.teste.response",
     latitude = -65.132132132,
     longitude = -25.465486,
     price = 32.99f,
-    title = "Test Title",
+    title = "Test Title Response",
     id = "121"
 )

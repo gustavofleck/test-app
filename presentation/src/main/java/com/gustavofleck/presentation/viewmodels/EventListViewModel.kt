@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gustavofleck.data.errors.exceptions.ConnectionException
-import com.gustavofleck.data.errors.exceptions.GenericException
 import com.gustavofleck.domain.models.SimplifiedEvent
 import com.gustavofleck.domain.usecases.FetchEventListUseCase
 import com.gustavofleck.presentation.viewstates.EventListViewState
