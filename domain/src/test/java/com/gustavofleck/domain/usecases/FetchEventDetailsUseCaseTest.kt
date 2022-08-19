@@ -1,7 +1,7 @@
 package com.gustavofleck.domain.usecases
 
 import app.cash.turbine.test
-import com.gustavofleck.domain.repository.EventManagementRepository
+import com.gustavofleck.domain.repository.EventDetailsRepository
 import com.gustavofleck.domain.utils.createEvent
 import io.mockk.every
 import io.mockk.mockk
@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test
 internal class FetchEventDetailsUseCaseTest {
 
     private val eventId = "121"
-    private val repositoryMock = mockk<EventManagementRepository>(relaxed = true)
+    private val repositoryMock = mockk<EventDetailsRepository>(relaxed = true)
     private val useCase = FetchEventDetailsUseCase(repositoryMock)
 
     @Test

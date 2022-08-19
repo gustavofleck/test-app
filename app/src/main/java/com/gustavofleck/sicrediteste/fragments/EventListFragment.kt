@@ -18,7 +18,7 @@ class EventListFragment : Fragment() {
 
     private lateinit var binding: EventListFragmentBinding
     private lateinit var adapter: EventListAdapter
-    private val eventViewModel: EventListViewModel by viewModel()
+    private val viewModel: EventListViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,12 +32,12 @@ class EventListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         observeViewState()
         setupAdapter()
-        eventViewModel.eventList()
+        viewModel.eventList()
     }
 
 
     private fun observeViewState() {
-        eventViewModel.viewStateLiveData.observe(viewLifecycleOwner) { state ->
+        viewModel.viewStateLiveData.observe(viewLifecycleOwner) { state ->
             when (state) {
                 is EventListViewState.Loading -> handleProgressBar(isLoading = true)
                 is EventListViewState.Success -> handleSuccessState(state.eventList)

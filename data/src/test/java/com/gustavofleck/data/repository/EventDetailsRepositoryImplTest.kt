@@ -10,12 +10,12 @@ import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
-internal class EventManagementRepositoryImplTest {
+internal class EventDetailsRepositoryImplTest {
 
     private val eventId = "121"
     private val dataSourceMock = mockk<EventDetailsDataSource>(relaxed = true)
     private val errorHandlerMock = mockk<EventsErrorHandler>(relaxed = true)
-    private val repository = EventManagementRepositoryImpl(dataSourceMock, errorHandlerMock)
+    private val repository = EventDetailsRepositoryImpl(dataSourceMock, errorHandlerMock)
 
     @Test
     fun `eventDetails Should return an Event When data source returns an Event`() {

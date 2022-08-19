@@ -12,8 +12,8 @@ interface EventsService {
     @GET("events")
     suspend fun events(): List<EventResponse>
 
-    @GET("events/{id}")
-    suspend fun event(@Query("id") id: String): EventResponse
+    @GET("events")
+    suspend fun event(@Query("id") id: String): List<EventResponse>
 
     @POST("checkin")
     suspend fun checkIn(@Body checkInRequest: CheckInRequest)

@@ -17,9 +17,9 @@
     </fragment>
     <fragment
         android:id="@+id/EventDetails"
-        android:name="com.gustavofleck.sicrediteste.fragments.EventDetailsFragment"
+        android:name="com.gustavofleck.sicrediteste.fragments.EventManagementFragment"
         android:label="@string/event_details_toolbar_title"
-        tools:layout="@layout/event_details_fragment">
+        tools:layout="@layout/event_management_fragment">
 
         <argument
             android:name="eventId"

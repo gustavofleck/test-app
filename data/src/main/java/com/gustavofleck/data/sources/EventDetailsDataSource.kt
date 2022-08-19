@@ -11,7 +11,7 @@ class EventDetailsDataSource(
 
     suspend fun eventDetails(eventId: String): Event {
         val response = service.event(eventId)
-        return eventMapper.map(response)
+        return eventMapper.map(response.first())
     }
 
 }
