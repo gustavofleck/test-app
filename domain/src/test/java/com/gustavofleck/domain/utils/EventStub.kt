@@ -7,8 +7,9 @@ fun createEvent() = Event(
     date = "12/12/2022",
     description = "Test description",
     image = "https://imageurl.teste",
-    address = "Rua 123",
+    latitude = -61.12312,
+    longitude = -30.4132,
     price = 32.99f,
     title = "Test Title",
-    id = 121
+    id = "121"
 )
