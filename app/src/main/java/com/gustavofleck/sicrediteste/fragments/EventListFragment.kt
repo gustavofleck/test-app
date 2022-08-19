@@ -1,4 +1,4 @@
-package com.gustavofleck.sicrediteste
+package com.gustavofleck.sicrediteste.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -24,7 +24,7 @@ class EventListFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = EventListFragmentBinding.inflate(layoutInflater)
+        binding = EventListFragmentBinding.inflate(inflater)
         return binding.root
     }
 

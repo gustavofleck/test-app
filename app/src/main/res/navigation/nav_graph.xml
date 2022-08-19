@@ -3,26 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/EventList">
 
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.gustavofleck.sicrediteste.EventListFragment"
-        android:label="@string/first_fragment_label"
+        android:id="@+id/EventList"
+        android:name="com.gustavofleck.sicrediteste.fragments.EventListFragment"
+        android:label="@string/event_list_toolbar_title"
         tools:layout="@layout/event_list_fragment">
 
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/actionToEventDetails"
+            app:destination="@id/EventDetails" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.gustavofleck.sicrediteste.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        android:id="@+id/EventDetails"
+        android:name="com.gustavofleck.sicrediteste.fragments.EventDetailsFragment"
+        android:label="@string/event_details_toolbar_title"
+        tools:layout="@layout/event_details_fragment">
 
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+        <argument
+            android:name="eventId"
+            app:argType="string" />
     </fragment>
 </navigation>
