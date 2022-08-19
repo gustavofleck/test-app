@@ -2,7 +2,7 @@ package com.gustavofleck.sicrediteste.di
 
 import com.gustavofleck.data.api.EventsServiceProvider
 import com.gustavofleck.data.errors.handler.EventsErrorHandler
-import com.gustavofleck.data.mappers.EventMapper
+import com.gustavofleck.data.mappers.EventListMapper
 import com.gustavofleck.data.repository.EventListRepositoryImpl
 import com.gustavofleck.data.sources.EventListDataSource
 import com.gustavofleck.domain.repository.EventListRepository
@@ -30,7 +30,7 @@ private val dataModule = module {
     factory {
         EventListDataSource(
             service = get(),
-            mapper = EventMapper()
+            mapper = EventListMapper()
         )
     }
     factory { EventsErrorHandler() }

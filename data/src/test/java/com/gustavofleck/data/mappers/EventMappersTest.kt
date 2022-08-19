@@ -8,11 +8,12 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.text.SimpleDateFormat
 
-internal class EventMapperTest{
+internal class EventMappersTest{
 
     private val date = "12/10/2022"
     private val dateFormatMock = mockk<SimpleDateFormat>(relaxed = true)
-    private val mapper = EventMapper(dateFormatMock)
+    private val eventMapper = EventMapper(dateFormatMock)
+    private val mapper = EventListMapper(eventMapper)
 
     @Test
     fun `map Should return mapped event list When receive an event response list`() {

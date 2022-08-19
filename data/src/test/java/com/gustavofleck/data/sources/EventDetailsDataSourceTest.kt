@@ -11,21 +11,22 @@ import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
-class EventListDataSourceTest {
+internal class EventDetailsDataSourceTest {
 
+    private val eventId = "121"
     private val serviceMock = mockk<EventsService>()
-    private val mapper = EventListMapper(EventMapper())
-    private val dataSource = EventListDataSource(serviceMock, mapper)
+    private val mapper = EventMapper()
+    private val dataSource = EventDetailsDataSource(serviceMock, mapper)
 
     @Test
-    fun `eventList Should return a mapped list of Event When service return a list of EventResponse`() {
-        val expectedResponse = listOf(createEventResponse(), createEventResponse())
-        coEvery { serviceMock.events() } returns expectedResponse
+    fun `event Should return a mapped Event When service return an EventResponse`() {
+        val expectedResponse = createEventResponse()
+        coEvery { serviceMock.event(eventId) } returns expectedResponse
 
-        runBlocking { dataSource.eventList() }
+        runBlocking { dataSource.eventDetails(eventId) }
 
         coVerify {
-            serviceMock.events()
+            serviceMock.event(eventId)
             mapper.map(expectedResponse)
         }
     }
@@ -33,10 +34,11 @@ class EventListDataSourceTest {
     @Test
     fun `eventList Should throws an exception When service throws an exception`() {
         val expectedThrowable = Throwable()
-        coEvery { serviceMock.events() } throws expectedThrowable
+        coEvery { serviceMock.event(eventId) } throws expectedThrowable
 
         runBlocking {
-            assertThrows<Throwable> { dataSource.eventList() }
+            assertThrows<Throwable> { dataSource.eventDetails(eventId) }
         }
     }
+
 }

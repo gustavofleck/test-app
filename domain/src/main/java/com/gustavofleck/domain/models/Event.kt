@@ -12,4 +12,4 @@ data class Event(
     val id: String
 )
 
-fun Event.simplify() = SimplifiedEvent(title, image, date, longitude, latitude, price, id)
+fun Event.simplify() = SimplifiedEvent(title, image, date, price, id)
