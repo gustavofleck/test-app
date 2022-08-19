@@ -2,6 +2,8 @@ package com.gustavofleck.presentation.viewmodels
 
 import androidx.lifecycle.Observer
 import com.gustavofleck.data.errors.exceptions.ConnectionException
+import com.gustavofleck.domain.models.CheckInResult
+import com.gustavofleck.domain.usecases.CheckInUseCase
 import com.gustavofleck.domain.usecases.FetchEventDetailsUseCase
 import com.gustavofleck.presentation.utils.common.CoroutinesTestExtension
 import com.gustavofleck.presentation.utils.common.InstantExecutorExtension
@@ -24,9 +26,12 @@ import org.junit.jupiter.api.extension.ExtendWith
 internal class EventManagementViewModelTest {
 
     private val eventId = "121"
+    private val name = "Teste"
+    private val email = "teste@teste.com"
     private val viewStateObserverMock = mockk<Observer<EventManagementViewState>>(relaxed = true)
-    private val useCaseMock = mockk<FetchEventDetailsUseCase>(relaxed = true)
-    private val viewModel = EventManagementViewModel(useCaseMock, Dispatchers.Unconfined)
+    private val detailsUseCaseMock = mockk<FetchEventDetailsUseCase>(relaxed = true)
+    private val checkInUseCaseMock = mockk<CheckInUseCase>(relaxed = true)
+    private val viewModel = EventManagementViewModel(detailsUseCaseMock, checkInUseCaseMock,Dispatchers.Unconfined)
 
     @BeforeEach
     fun setUp() {
@@ -48,7 +53,7 @@ internal class EventManagementViewModelTest {
     @Test
     fun `eventList Should set Success state When request is successfully completed`() {
         val expectedEventDetails = createEvent()
-        every { useCaseMock.invoke(eventId) } returns flowOf(expectedEventDetails)
+        every { detailsUseCaseMock.invoke(eventId) } returns flowOf(expectedEventDetails)
         runTest {
             viewModel.eventDetails(eventId)
 
@@ -60,7 +65,7 @@ internal class EventManagementViewModelTest {
 
     @Test
     fun `eventList Should set ConnectionError state When has connection issues`() {
-        every { useCaseMock.invoke(eventId) } returns flow { throw ConnectionException() }
+        every { detailsUseCaseMock.invoke(eventId) } returns flow { throw ConnectionException() }
         runTest {
             viewModel.eventDetails(eventId)
 
@@ -72,9 +77,57 @@ internal class EventManagementViewModelTest {
 
     @Test
     fun `eventList Should set GenericError state When has generic issues`() {
-        every { useCaseMock.invoke(eventId) } returns flow { throw Throwable() }
+        every { detailsUseCaseMock.invoke(eventId) } returns flow { throw Throwable() }
         runTest {
             viewModel.eventDetails(eventId)
+
+            verify {
+                viewStateObserverMock.onChanged(EventManagementViewState.GenericError)
+            }
+        }
+    }
+
+    @Test
+    fun `eventCheckIn Should set Loading state When a request begins`() {
+        runTest {
+            viewModel.eventDetails(eventId)
+
+            verify {
+                viewStateObserverMock.onChanged(EventManagementViewState.Loading)
+            }
+        }
+
+    }
+
+    @Test
+    fun `eventCheckIn Should set Success state When request is successfully completed`() {
+        every { checkInUseCaseMock.invoke(eventId, name, email) } returns flowOf(CheckInResult("200"))
+        runTest {
+            viewModel.eventCheckIn(eventId, name, email)
+
+            verify {
+                viewStateObserverMock.onChanged(EventManagementViewState.SuccessCheckIn)
+            }
+        }
+    }
+
+    @Test
+    fun `eventCheckIn Should set ConnectionError state When has connection issues`() {
+        every { checkInUseCaseMock.invoke(eventId, name, email) } returns flow { throw ConnectionException() }
+        runTest {
+            viewModel.eventCheckIn(eventId, name, email)
+
+            verify {
+                viewStateObserverMock.onChanged(EventManagementViewState.ConnectionError)
+            }
+        }
+    }
+
+    @Test
+    fun `eventCheckIn Should set GenericError state When has generic issues`() {
+        every { checkInUseCaseMock.invoke(eventId, name, email) } returns flow { throw Throwable() }
+        runTest {
+            viewModel.eventCheckIn(eventId, name, email)
 
             verify {
                 viewStateObserverMock.onChanged(EventManagementViewState.GenericError)
