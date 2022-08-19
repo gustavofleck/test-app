@@ -37,8 +37,10 @@ class EventListRepositoryImplTest {
         coEvery { dataSourceMock.eventList() } throws expectedThrowable
         coEvery { errorHandlerMock.handle(expectedThrowable) } returns expectedThrowable
 
+        val result = repository.eventList()
+
         runBlocking {
-            repository.eventList().test {
+            result.test {
                 assertEquals(expectedThrowable, awaitError())
             }
         }
