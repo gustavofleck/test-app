@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.gustavofleck.sicrediteste.R
 import com.gustavofleck.sicrediteste.databinding.CheckInBottomSheetBinding
 
 class CheckInBottomSheet(
@@ -25,6 +26,8 @@ class CheckInBottomSheet(
         super.onViewCreated(view, savedInstanceState)
         setupCheckInConfirmationButton()
     }
+
+    override fun getTheme(): Int = com.google.android.material.R.style.Theme_Design_BottomSheetDialog
 
     private fun setupCheckInConfirmationButton() {
         with(binding) {
