@@ -42,22 +42,22 @@ dependencies {
     api project(':domain')
 
     // Retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.google.code.gson:gson:2.8.9'
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.google.code.gson:gson:$retrofit_version"
     implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2'
 
     // Mockk
-    testImplementation "io.mockk:mockk:1.12.5"
+    testImplementation "io.mockk:mockk:$mockk_version"
 
     // Hamcrest
-    testImplementation 'org.hamcrest:hamcrest:2.2'
+    testImplementation "org.hamcrest:hamcrest:2.2"
 
     // JUnit 5
-    testImplementation "org.junit.jupiter:junit-jupiter-api:5.7.0"
-    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.7.0"
-    testRuntimeOnly "org.junit.vintage:junit-vintage-engine:5.7.0"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit5_version"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit5_version"
+    testRuntimeOnly "org.junit.vintage:junit-vintage-engine:$junit5_version"
 
     // Turbine
-    testImplementation 'app.cash.turbine:turbine:0.8.0'
+    testImplementation "app.cash.turbine:turbine:$turbine_version"
 }

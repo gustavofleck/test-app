@@ -40,16 +40,16 @@ android {
 dependencies {
 
     // Coroutines
-    api 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
 
     // JUnit 5
-    testImplementation "org.junit.jupiter:junit-jupiter-api:5.7.0"
-    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.7.0"
-    testRuntimeOnly "org.junit.vintage:junit-vintage-engine:5.7.0"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit5_version"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit5_version"
+    testRuntimeOnly "org.junit.vintage:junit-vintage-engine:$junit5_version"
 
     // Turbine
-    testImplementation 'app.cash.turbine:turbine:0.8.0'
+    testImplementation "app.cash.turbine:turbine:$turbine_version"
 
     // Mockk
-    testImplementation "io.mockk:mockk:1.12.5"
+    testImplementation "io.mockk:mockk:$mockk_version"
 }

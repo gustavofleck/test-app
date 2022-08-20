@@ -1,10 +1,24 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext {
+        kotlin_version = "1.7.10"
+        coroutines_version = "1.6.1"
+        nav_version = "2.5.1"
+        koin_version = "3.2.0"
+        glide_version = "4.13.2"
+        retrofit_version = "2.9.0"
+        junit5_version = "5.7.0"
+        turbine_version = "0.8.0"
+        mockk_version = "1.12.5"
+    }
+}
+
 plugins {
     id 'com.android.application' version '7.2.2' apply false
     id 'com.android.library' version '7.2.2' apply false
-    id 'org.jetbrains.kotlin.android' version '1.7.10' apply false
-    id "org.jetbrains.kotlin.jvm" version "1.7.10" apply false
-    id 'androidx.navigation.safeargs' version '2.5.1' apply false
+    id 'org.jetbrains.kotlin.android' version "$kotlin_version" apply false
+    id "org.jetbrains.kotlin.jvm" version "$kotlin_version" apply false
+    id 'androidx.navigation.safeargs' version "$nav_version" apply false
 }
 
 task clean(type: Delete) {
