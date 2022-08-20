@@ -12,12 +12,18 @@ import com.gustavofleck.presentation.viewmodels.EventListViewModel
 import com.gustavofleck.presentation.viewstates.EventListViewState
 import com.gustavofleck.sicrediteste.adapters.EventListAdapter
 import com.gustavofleck.sicrediteste.databinding.EventListFragmentBinding
+import com.gustavofleck.sicrediteste.enums.ErrorsEnum
+import com.gustavofleck.sicrediteste.enums.ErrorsEnum.CONNECTION_ERROR
+import com.gustavofleck.sicrediteste.enums.ErrorsEnum.GENERIC_ERROR
+import com.gustavofleck.sicrediteste.handlers.DialogHandler
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class EventListFragment : Fragment() {
 
     private lateinit var binding: EventListFragmentBinding
     private lateinit var adapter: EventListAdapter
+    private val dialogHandler: DialogHandler by inject()
     private val viewModel: EventListViewModel by viewModel()
 
     override fun onCreateView(
@@ -41,8 +47,8 @@ class EventListFragment : Fragment() {
             when (state) {
                 is EventListViewState.Loading -> handleProgressBar(isLoading = true)
                 is EventListViewState.Success -> handleSuccessState(state.eventList)
-                is EventListViewState.ConnectionError -> {}
-                is EventListViewState.GenericError -> {}
+                is EventListViewState.ConnectionError -> handleConnectionErrorState()
+                is EventListViewState.GenericError -> handleGenericErrorState()
             }
         }
     }
@@ -63,9 +69,18 @@ class EventListFragment : Fragment() {
         adapter.submitList(eventList)
     }
 
+    private fun handleConnectionErrorState() {
+        handleProgressBar(isLoading = false)
+        dialogHandler.showErrorDialog(CONNECTION_ERROR, requireContext())
+    }
+
+    private fun handleGenericErrorState() {
+        handleProgressBar(isLoading = false)
+        dialogHandler.showErrorDialog(GENERIC_ERROR, requireContext())
+    }
+
     private fun handleProgressBar(isLoading: Boolean) {
         binding.progressBar.isVisible = isLoading
     }
-
 
 }

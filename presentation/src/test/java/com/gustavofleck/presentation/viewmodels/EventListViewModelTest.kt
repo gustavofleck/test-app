@@ -1,7 +1,7 @@
 package com.gustavofleck.presentation.viewmodels
 
 import androidx.lifecycle.Observer
-import com.gustavofleck.data.errors.exceptions.ConnectionException
+import com.gustavofleck.domain.exceptions.ConnectionException
 import com.gustavofleck.domain.models.simplify
 import com.gustavofleck.domain.usecases.FetchEventListUseCase
 import com.gustavofleck.presentation.utils.common.CoroutinesTestExtension

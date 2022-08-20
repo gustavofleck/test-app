@@ -4,7 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.gustavofleck.data.errors.exceptions.ConnectionException
+import com.gustavofleck.domain.exceptions.ConnectionException
+import com.gustavofleck.domain.exceptions.InvalidDataException
 import com.gustavofleck.domain.models.CheckInResult
 import com.gustavofleck.domain.models.Event
 import com.gustavofleck.domain.usecases.CheckInUseCase
@@ -61,10 +62,10 @@ class EventManagementViewModel(
     }
 
     private fun handleErrorState(error: Throwable) {
-        _viewStateLiveData.value = if (error is ConnectionException) {
-            EventManagementViewState.ConnectionError
-        } else {
-            EventManagementViewState.GenericError
+        _viewStateLiveData.value = when (error) {
+            is ConnectionException -> EventManagementViewState.ConnectionError
+            is InvalidDataException -> EventManagementViewState.InvalidDataError
+            else -> EventManagementViewState.GenericError
         }
     }
 

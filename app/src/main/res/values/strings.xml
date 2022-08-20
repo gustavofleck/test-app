@@ -3,14 +3,20 @@
     <string name="action_settings">Settings</string>
     <string name="event_list_toolbar_title">Eventos</string>
     <string name="event_details_toolbar_title">Detalhes do evento</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <string name="event_price">Preço: R$ %.2f</string>
     <string name="event_date_hour">Data e hora: %s</string>
     <string name="event_image_content_description">Imagem do evento</string>
     <string name="event_share_text">Vai acontecer no dia %s, o evento %s, por apenas R$ %.2f. Participe!</string>
+    <string name="check_in_bottom_sheet_title">Insira seus dados para confirmar o checkin</string>
+    <string name="name_hint">Nome</string>
+    <string name="email_hint">Email</string>
+    <string name="confirm_check_in">Confirmar</string>
+    <string name="success_check_in">Check-in no evento efetuado com sucesso!</string>
+    <string name="next">Continuar</string>
+    <string name="generic_error_message">Ocorreu um erro inesperado! Tente novamente mais tarde.</string>
+    <string name="connection_error_message">Parece que você está com problemas de conexão. Verifique se está com acesso a internet e tente novamente.</string>
+    <string name="invalid_data_error_message">É necessário preencher todos os campos corretamente. Verifique as informações digitadas e tente novamente</string>
+    <string name="error_ocurred">Ops! Ocorreu um erro</string>
+
 </resources>
