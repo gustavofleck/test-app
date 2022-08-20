@@ -2,6 +2,7 @@ package com.gustavofleck.presentation.viewmodels
 
 import androidx.lifecycle.Observer
 import com.gustavofleck.domain.exceptions.ConnectionException
+import com.gustavofleck.domain.exceptions.InvalidDataException
 import com.gustavofleck.domain.models.CheckInResult
 import com.gustavofleck.domain.usecases.CheckInUseCase
 import com.gustavofleck.domain.usecases.FetchEventDetailsUseCase
@@ -51,7 +52,7 @@ internal class EventManagementViewModelTest {
     }
 
     @Test
-    fun `eventList Should set Success state When request is successfully completed`() {
+    fun `eventDetails Should set Success state When request is successfully completed`() {
         val expectedEventDetails = createEvent()
         every { detailsUseCaseMock.invoke(eventId) } returns flowOf(expectedEventDetails)
         runTest {
@@ -64,7 +65,7 @@ internal class EventManagementViewModelTest {
     }
 
     @Test
-    fun `eventList Should set ConnectionError state When has connection issues`() {
+    fun `eventDetails Should set ConnectionError state When has connection issues`() {
         every { detailsUseCaseMock.invoke(eventId) } returns flow { throw ConnectionException() }
         runTest {
             viewModel.eventDetails(eventId)
@@ -76,7 +77,7 @@ internal class EventManagementViewModelTest {
     }
 
     @Test
-    fun `eventList Should set GenericError state When has generic issues`() {
+    fun `eventDetails Should set GenericError state When has generic issues`() {
         every { detailsUseCaseMock.invoke(eventId) } returns flow { throw Throwable() }
         runTest {
             viewModel.eventDetails(eventId)
@@ -131,6 +132,18 @@ internal class EventManagementViewModelTest {
 
             verify {
                 viewStateObserverMock.onChanged(EventManagementViewState.GenericError)
+            }
+        }
+    }
+
+    @Test
+    fun `eventCheckIn Should set InvalidDataError state When user input invalid data`() {
+        every { checkInUseCaseMock.invoke(eventId, name, email) } returns flow { throw InvalidDataException() }
+        runTest {
+            viewModel.eventCheckIn(eventId, name, email)
+
+            verify {
+                viewStateObserverMock.onChanged(EventManagementViewState.InvalidDataError)
             }
         }
     }
