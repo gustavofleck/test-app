@@ -1,6 +1,6 @@
 ## Arquitetura
 
-Para esse teste foi escolhida uma abordagem utilizando o padrão arquitetural MVVM (Model-View-ViewModel) com uso dos conceitos do Clean Architecture para definir as camadas e relações entre elas. O aplicativo foi dividido em quatro módulos:
+Para esse aplicativo foi escolhida uma abordagem utilizando o padrão arquitetural MVVM (Model-View-ViewModel) com uso dos conceitos do Clean Architecture para definir as camadas e relações entre elas. O aplicativo foi dividido em quatro módulos:
 
 - **Data**: responsável pela obtenção dos dados das fontes externas, e mapeamento dos dados para entidades de domínio que podem ser utilizadas com maior segurança pelo aplicativo
 
