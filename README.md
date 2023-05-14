@@ -1,5 +1,3 @@
-# Teste Sicredi
-
 ## Arquitetura
 
 Para esse teste foi escolhida uma abordagem utilizando o padrão arquitetural MVVM (Model-View-ViewModel) com uso dos conceitos do Clean Architecture para definir as camadas e relações entre elas. O aplicativo foi dividido em quatro módulos:
